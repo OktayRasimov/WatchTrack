@@ -1,7 +1,14 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
-:root
+:root {
+    --color-grey-500:#23262F;
+    --color-grey-400:#323232;
+    //more light
+    --color-light-100:#496096;
+    //whites
+    --color-white-100:#EFEFF1;
+}
 
 
 *,
@@ -19,7 +26,7 @@ html {
 body {
   font-family: "Poppins", sans-serif;
   color: var(--color-grey-700);
-
+background-color: var(--color-grey-500);
   transition: color 0.3s, background-color 0.3s;
   min-height: 100vh;
   line-height: 1.5;
