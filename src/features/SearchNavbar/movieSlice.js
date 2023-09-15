@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   movieData: [],
+
   query: "",
 };
 
@@ -18,6 +19,6 @@ export const movieSlice = createSlice({
   },
 });
 
-export const { addMovies, addQuery } = movieSlice.actions;
+export const { addMovies, addQuery, addMoviesFound } = movieSlice.actions;
 
 export default movieSlice.reducer;

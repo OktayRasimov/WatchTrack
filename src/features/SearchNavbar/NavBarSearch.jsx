@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useQuery } from "@tanstack/react-query";
 import { getMovies } from "../../services/useMovies";
 import { useSelector, useDispatch } from "react-redux";
-import { addQuery } from "./movieSlice";
+import { addMovies, addMoviesFound, addQuery } from "./movieSlice";
 
 const NavbarInput = styled.input`
   width: 15%;
@@ -18,16 +18,19 @@ const NavbarInput = styled.input`
 
 function NavBarSearch() {
   const searchQuery = useSelector((state) => state.movie.query);
-  console.log(searchQuery);
+  const foundMovies = useSelector((state) => state.movie.moviesFound);
+
   const dispatch = useDispatch();
 
-  // Queries
-  const movieData = useQuery({
+  //React Queries movie data fetching
+  const { data, isLoading } = useQuery({
     queryKey: ["getMovies"],
     queryFn: () => getMovies(searchQuery),
   });
 
-  console.log(movieData);
+  const moviesFound = data?.Search ? data.Search : ["Not Found"];
+
+  dispatch(addMovies(moviesFound));
 
   return (
     <NavbarInput
