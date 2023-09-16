@@ -1,9 +1,20 @@
+import { useDispatch } from "react-redux";
+import { addSelectedMovie } from "../features/SearchNavbar/movieSlice";
+
 const KEY = "5970a58f";
 
 export async function getMovies(query) {
-  const res = await fetch(`https://www.omdbapi.com/?apikey=${KEY}&s=${query}`);
+  const res = await fetch(`http://www.omdbapi.com/?s=${query}&apikey=${KEY}`);
 
-  const data = res.json();
+  const data = await res.json();
+
+  return data;
+}
+
+export async function getMoviesFullData(id) {
+  const res = await fetch(`http://www.omdbapi.com/?i=${id}&apikey=${KEY}`);
+
+  const data = await res.json();
 
   return data;
 }

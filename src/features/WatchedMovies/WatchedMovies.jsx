@@ -1,15 +1,21 @@
 import { useSelector } from "react-redux";
 import { BoxButton, StyledBox } from "../RenderedMovies/Box";
+import styled from "styled-components";
+
+const MovieInfoContainer = styled.div`
+  margin-top: 3rem;
+`;
 
 function WatchedMovies() {
-  const selectedMovie = useSelector((state) => state.movie.selectedMovie);
-  console.log(selectedMovie);
+  const { Year, imdbRating, Title, Runtime, Plot, Director, Actors } =
+    useSelector((state) => state.movie.selectedMovie);
+
   return (
     <StyledBox>
       <BoxButton>
         <p>+</p>
       </BoxButton>
-      <h1>TEST</h1>
+      <MovieInfoContainer>TEST</MovieInfoContainer>
     </StyledBox>
   );
 }

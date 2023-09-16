@@ -2,7 +2,8 @@ import styled from "styled-components";
 import { useQuery } from "@tanstack/react-query";
 import { getMovies } from "../../services/useMovies";
 import { useSelector, useDispatch } from "react-redux";
-import { addMovies, addQuery } from "./movieSlice";
+import { addMovies, addQuery, isMovieSearchLoading } from "./movieSlice";
+import { useState } from "react";
 
 const NavbarInput = styled.input`
   width: 15%;
@@ -18,29 +19,37 @@ const NavbarInput = styled.input`
 
 function NavBarSearch() {
   const searchQuery = useSelector((state) => state.movie.query);
-  const foundMovies = useSelector((state) => state.movie.moviesFound);
+
+  const [searchMovie, setSearchMovie] = useState("");
 
   const dispatch = useDispatch();
 
   //React Queries movie data fetching
   const { data, isLoading } = useQuery({
-    queryKey: ["getMovies"],
+    queryKey: ["getMovies", searchQuery],
     queryFn: () => getMovies(searchQuery),
   });
 
-  const moviesFound = data?.Search ? data.Search : ["Not Found"];
+  dispatch(isMovieSearchLoading(isLoading));
 
-  dispatch(addMovies(moviesFound));
+  if (data?.Search) dispatch(addMovies(data.Search));
+
+  function handleAddQuery() {
+    dispatch(addQuery(searchMovie));
+  }
 
   return (
-    <NavbarInput
-      placeholder="Search Movies..."
-      onChange={(e) =>
-        setTimeout(() => {
-          dispatch(addQuery(e.target.value));
-        }, 3000)
-      }
-    />
+    <>
+      <NavbarInput
+        placeholder="Search Movies..."
+        onChange={(e) => setSearchMovie(e.target.value)}
+      />
+      <button onClick={handleAddQuery}>+</button>
+    </>
+    // <NavbarInput
+    //   placeholder="Search Movies..."
+    //   onChange={(e) => dispatch(addQuery(e.target.value))}
+    // />
   );
 }
 

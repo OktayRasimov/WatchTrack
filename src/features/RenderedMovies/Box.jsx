@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import MovieDetailed from "./MovieDetailed";
+import Loader from "../../ui/Loader";
 
 export const StyledBox = styled.div`
   width: 42rem;
@@ -31,12 +32,13 @@ export const BoxButton = styled.button`
 `;
 
 function Box() {
-  const movies = useSelector((state) => state.movie.movieData);
+  const { movieData, isLoading } = useSelector((state) => state.movie);
 
   return (
     <StyledBox>
+      {isLoading && <Loader />}
       <ul>
-        {movies.map((mov) => (
+        {movieData.map((mov) => (
           <MovieDetailed movie={mov} key={mov.imdbId} />
         ))}
       </ul>

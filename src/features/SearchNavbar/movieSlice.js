@@ -4,6 +4,7 @@ const initialState = {
   movieData: [],
   watchedMovieData: [],
   selectedMovie: [],
+  isLoading: null,
   query: "",
 };
 
@@ -20,9 +21,13 @@ export const movieSlice = createSlice({
     addSelectedMovie: (state, action) => {
       state.selectedMovie = action.payload;
     },
+    isMovieSearchLoading: (state, action) => {
+      state.isLoading = action.payload;
+    },
   },
 });
 
-export const { addMovies, addQuery, addSelectedMovie } = movieSlice.actions;
+export const { addMovies, addQuery, addSelectedMovie, isMovieSearchLoading } =
+  movieSlice.actions;
 
 export default movieSlice.reducer;
