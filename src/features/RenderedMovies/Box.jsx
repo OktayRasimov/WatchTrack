@@ -2,17 +2,19 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 import MovieDetailed from "./MovieDetailed";
 
-const StyledBox = styled.div`
+export const StyledBox = styled.div`
   width: 42rem;
   max-width: 42rem;
   background-color: var(--color-background-300);
   border-radius: 0.9rem;
-  overflow: scroll;
+  overflow: auto;
+  height: max(800px, 400px);
   position: relative;
+
   background-color: var(--color-grey-600);
 `;
 
-const BoxButton = styled.button`
+export const BoxButton = styled.button`
   position: absolute;
   top: 0.8rem;
   right: 0.8rem;
@@ -33,9 +35,6 @@ function Box() {
 
   return (
     <StyledBox>
-      <BoxButton>
-        <p>+</p>
-      </BoxButton>
       <ul>
         {movies.map((mov) => (
           <MovieDetailed movie={mov} key={mov.imdbId} />

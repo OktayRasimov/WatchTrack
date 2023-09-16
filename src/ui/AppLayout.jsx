@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import NavBar from "../features/SearchNavbar/NavBar";
-import Box from "./Box";
+
+import WatchedMovies from "../features/WatchedMovies/WatchedMovies";
+import Box from "../features/RenderedMovies/Box";
 
 const MainBox = styled.div`
   display: flex;
@@ -15,7 +17,7 @@ function AppLayout() {
       <NavBar />
       <MainBox>
         <Box />
-        <Box />
+        <WatchedMovies />
       </MainBox>
     </>
   );

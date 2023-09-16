@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   movieData: [],
-
+  watchedMovieData: [],
+  selectedMovie: [],
   query: "",
 };
 
@@ -16,9 +17,12 @@ export const movieSlice = createSlice({
     addQuery: (state, action) => {
       state.query = action.payload;
     },
+    addSelectedMovie: (state, action) => {
+      state.selectedMovie = action.payload;
+    },
   },
 });
 
-export const { addMovies, addQuery, addMoviesFound } = movieSlice.actions;
+export const { addMovies, addQuery, addSelectedMovie } = movieSlice.actions;
 
 export default movieSlice.reducer;

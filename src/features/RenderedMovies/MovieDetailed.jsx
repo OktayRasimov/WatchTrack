@@ -1,4 +1,6 @@
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { addSelectedMovie } from "../SearchNavbar/movieSlice";
 
 const Img = styled.img`
   height: 40%;
@@ -7,9 +9,13 @@ const Img = styled.img`
 `;
 const StyledLi = styled.li`
   margin-top: 2rem;
-
+  transition: all 0.4s;
   text-align: center;
   padding-bottom: 1rem;
+  cursor: pointer;
+  &:hover {
+    transform: translateY(-5px);
+  }
 `;
 
 const MovieTitle = styled.p`
@@ -19,9 +25,15 @@ const MovieTitle = styled.p`
 
 function MovieDetailed({ movie }) {
   const { Title, Poster } = movie;
-  console.log(movie);
+
+  const dispatch = useDispatch();
+
+  function handleAddSelectedMovie() {
+    dispatch(addSelectedMovie(movie));
+  }
+
   return (
-    <StyledLi>
+    <StyledLi onClick={handleAddSelectedMovie}>
       <Img src={Poster} />
       <MovieTitle>{Title}</MovieTitle>
     </StyledLi>
