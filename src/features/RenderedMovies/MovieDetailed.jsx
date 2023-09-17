@@ -9,7 +9,8 @@ const Img = styled.img`
   border-radius: 10px;
   transition: all 0.6s;
   &:hover {
-    transform: scale(1.1);
+    transform: translateY(-3px);
+    filter: blur(0.9px);
   }
 `;
 const StyledLi = styled.li`
