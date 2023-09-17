@@ -25,7 +25,7 @@ function NavBarSearch() {
   const dispatch = useDispatch();
 
   //React Queries movie data fetching
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, isError } = useQuery({
     queryKey: ["getMovies", searchQuery],
     queryFn: () => getMovies(searchQuery),
   });
@@ -35,6 +35,7 @@ function NavBarSearch() {
   if (data?.Search) dispatch(addMovies(data.Search));
 
   function handleAddQuery() {
+    dispatch(addMovies([]));
     dispatch(addQuery(searchMovie));
   }
 

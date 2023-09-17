@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 import MovieDetailed from "./MovieDetailed";
 import Loader from "../../ui/Loader";
+import StartSearching from "../../ui/StartSearching";
 
 export const StyledBox = styled.div`
   width: 42rem;
@@ -11,7 +12,6 @@ export const StyledBox = styled.div`
   overflow: auto;
   height: max(800px, 400px);
   position: relative;
-
   background-color: var(--color-grey-600);
 `;
 
@@ -36,6 +36,7 @@ function Box() {
 
   return (
     <StyledBox>
+      {!movieData.length && <StartSearching />}
       {isLoading && <Loader />}
       <ul>
         {movieData.map((mov) => (
