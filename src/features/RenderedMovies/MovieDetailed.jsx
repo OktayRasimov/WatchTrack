@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { addSelectedMovie } from "../SearchNavbar/movieSlice";
+import { addIsShowing, addSelectedMovie } from "../SearchNavbar/movieSlice";
 import { getMoviesFullData } from "../../services/useMovies";
 
 const Img = styled.img`
@@ -34,6 +34,7 @@ function MovieDetailed({ movie }) {
   async function handleAddSelectedMovie() {
     const x = await getMoviesFullData(movie.imdbID);
     dispatch(addSelectedMovie(x));
+    dispatch(addIsShowing(true));
   }
 
   return (
