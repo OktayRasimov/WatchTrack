@@ -28,6 +28,9 @@ export const movieSlice = createSlice({
     addIsShowing: (state, action) => {
       state.isShowing = action.payload;
     },
+    addWatchedMovies: (state, action) => {
+      state.watchedMovieData = [...state.watchedMovieData, action.payload];
+    },
   },
 });
 
@@ -37,6 +40,7 @@ export const {
   addSelectedMovie,
   isMovieSearchLoading,
   addIsShowing,
+  addWatchedMovies,
 } = movieSlice.actions;
 
 export default movieSlice.reducer;

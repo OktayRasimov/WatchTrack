@@ -1,6 +1,8 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { BoxButton } from "../RenderedMovies/Box";
+import AddedWatchedMovies from "./AddedWatchedMovies";
+import { addWatchedMovies } from "../SearchNavbar/movieSlice";
 
 const SelectedImg = styled.img`
   width: auto;
@@ -14,6 +16,7 @@ const SelectedMovieFullInfo = styled.div`
 `;
 
 const SelectedMovieUpperPart = styled.div`
+  height: 42rem;
   display: flex;
   border-bottom: 3px solid var(--color-light-100);
 `;
@@ -24,7 +27,7 @@ const SelectedMovieUnderPart = styled.div`
 
 const SelectedMoviePlot = styled.div`
   color: var(--color-grey-300);
-  padding-top: 2.6rem;
+
   font-size: 1.8rem;
 `;
 
@@ -39,10 +42,15 @@ const AddButton = styled.button`
 `;
 
 function SelectedMovieBox() {
+  const dispatch = useDispatch();
   const { Year, imdbRating, Title, Runtime, Plot, Director, Actors, Poster } =
     useSelector((state) => state.movie.selectedMovie);
 
   const { selectedMovie, isShowing } = useSelector((state) => state.movie);
+
+  function handleAddWatchedMovies() {
+    dispatch(addWatchedMovies(selectedMovie));
+  }
 
   return (
     <SelectedMovieFullInfo>
@@ -51,17 +59,17 @@ function SelectedMovieBox() {
           <SelectedImg src={Poster} />
           <div>
             <h2>{Title}</h2>
-            <h2>{Year} 🗓</h2>
-            <h2>{Director}</h2>
-            <h2>{Actors}</h2>
-            <h2>{imdbRating} imbdRating</h2>
+            <h2>Release :{Year} 🗓</h2>
+            <h2>Director :{Director}</h2>
+            <h2>Cast :{Actors}</h2>
+            <h2>Rating :{imdbRating} imbdRating</h2>
             <SelectedMoviePlot>{Plot}</SelectedMoviePlot>
-            <AddButton>Add</AddButton>
+            <AddButton onClick={handleAddWatchedMovies}>Add</AddButton>
           </div>
         </SelectedMovieUpperPart>
       )}
       <SelectedMovieUnderPart>
-        <h2>test</h2>
+        <AddedWatchedMovies />
       </SelectedMovieUnderPart>
     </SelectedMovieFullInfo>
   );
