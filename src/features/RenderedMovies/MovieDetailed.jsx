@@ -33,6 +33,8 @@ function MovieDetailed({ movie }) {
 
   async function handleAddSelectedMovie() {
     const x = await getMoviesFullData(movie.imdbID);
+    const test = { ...x, message: "tester" };
+    console.log(test);
     dispatch(addSelectedMovie(x));
     dispatch(addIsShowing(true));
   }

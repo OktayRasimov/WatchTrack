@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { BoxButton } from "../RenderedMovies/Box";
+
 import AddedWatchedMovies from "./AddedWatchedMovies";
 import { addIsShowing, addWatchedMovies } from "../SearchNavbar/movieSlice";
 import { HiMiniTrophy } from "react-icons/hi2";
@@ -20,6 +20,7 @@ const SelectedMovieUpperPart = styled.div`
   height: 42rem;
   display: flex;
   border-bottom: 3px solid var(--color-light-100);
+  position: relative;
 `;
 const SelectedMovieUnderPart = styled.div`
   margin-top: 2rem;
@@ -33,13 +34,15 @@ const SelectedMoviePlot = styled.div`
 `;
 
 const AddButton = styled.button`
-  margin: 2rem 0;
   padding: 0.6rem 0.6rem;
   width: 70px;
   border-radius: 10px;
   color: #fff;
   background-color: var(--color-light-100);
   border: none;
+  position: absolute;
+  bottom: 5%;
+  right: 50%;
 `;
 
 const AlreadyAddedMovie = styled.h2`
@@ -57,9 +60,18 @@ const EachProp = styled.span`
   padding-left: ${(props) => props.$size};
 `;
 
+const TextArea = styled.textarea`
+  position: absolute;
+  width: 40%;
+  border-radius: 5px;
+  height: auto;
+  bottom: 5%;
+  right: 1%;
+`;
+
 function SelectedMovieBox() {
   const dispatch = useDispatch();
-  const { Year, imdbRating, Title, Runtime, Plot, Director, Actors, Poster } =
+  const { Year, imdbRating, Title, Plot, Director, Actors, Poster } =
     useSelector((state) => state.movie.selectedMovie);
 
   const { selectedMovie, isShowing, watchedMovieData } = useSelector(
@@ -102,6 +114,13 @@ function SelectedMovieBox() {
               <AddButton onClick={handleAddWatchedMovies}>Add</AddButton>
             ) : (
               <AlreadyAddedMovie>Movie already added</AlreadyAddedMovie>
+            )}
+            {!isWatched && (
+              <TextArea
+                maxLength={60}
+                placeholder="Write a review"
+                style={{ paddingLeft: "1rem" }}
+              />
             )}
           </div>
         </SelectedMovieUpperPart>

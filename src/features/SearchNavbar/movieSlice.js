@@ -6,6 +6,7 @@ const initialState = {
   selectedMovie: [],
   isLoading: null,
   isShowing: false,
+
   query: "",
 };
 
@@ -30,6 +31,10 @@ export const movieSlice = createSlice({
     },
     addWatchedMovies: (state, action) => {
       state.watchedMovieData = [...state.watchedMovieData, action.payload];
+      // state.selectedMovie = [
+      //   ...state.selectedMovie,
+      //   { message: action.payload },
+      // ];
     },
     removeAddedWatched: (state, action) => {
       state.watchedMovieData = state.watchedMovieData.filter(
