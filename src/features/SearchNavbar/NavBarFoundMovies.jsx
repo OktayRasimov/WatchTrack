@@ -12,12 +12,14 @@ const FoundMoviesNum = styled.span`
 `;
 
 function NavBarFoundMovies() {
-  const numMovies = useSelector((state) => state.movie.movieData);
+  const numMovies = useSelector((state) => state.movie.watchedMovieData);
 
-  return (
+  return !numMovies.length ? (
+    <FoundMovies>No Added Movies</FoundMovies>
+  ) : (
     <FoundMovies>
       <FoundMoviesNum>{numMovies.length}</FoundMoviesNum>
-      movies found
+      {numMovies.length === 1 ? "Movie" : "Movies"} Watched
     </FoundMovies>
   );
 }

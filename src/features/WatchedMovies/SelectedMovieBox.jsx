@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { BoxButton } from "../RenderedMovies/Box";
 import AddedWatchedMovies from "./AddedWatchedMovies";
 import { addIsShowing, addWatchedMovies } from "../SearchNavbar/movieSlice";
+import { HiMiniTrophy } from "react-icons/hi2";
 
 const SelectedImg = styled.img`
   width: auto;
@@ -46,6 +47,16 @@ const AlreadyAddedMovie = styled.h2`
   color: var(--color-light-100);
 `;
 
+const MovieTitle = styled.h2`
+  margin-bottom: 1rem;
+`;
+
+const EachProp = styled.span`
+  color: #fff;
+  font-size: 2rem;
+  padding-left: ${(props) => props.$size};
+`;
+
 function SelectedMovieBox() {
   const dispatch = useDispatch();
   const { Year, imdbRating, Title, Runtime, Plot, Director, Actors, Poster } =
@@ -70,11 +81,22 @@ function SelectedMovieBox() {
         <SelectedMovieUpperPart>
           <SelectedImg src={Poster} />
           <div>
-            <h2>{Title}</h2>
-            <h2>Release :{Year} 🗓</h2>
-            <h2>Director :{Director}</h2>
-            <h2>Cast :{Actors}</h2>
-            <h2>Rating :{imdbRating} imbdRating</h2>
+            <MovieTitle>{Title}</MovieTitle>
+            <h2>
+              Release :<EachProp $size="6rem">{Year} 🗓</EachProp>
+            </h2>
+            <h2>
+              Director :<EachProp $size="5.6rem">{Director} </EachProp>
+            </h2>
+            <h2>
+              Rating :
+              <EachProp $size="7.4rem">
+                {imdbRating} <HiMiniTrophy />
+              </EachProp>
+            </h2>
+            <h2>
+              Cast :<EachProp $size="9.6rem">{Actors} </EachProp>
+            </h2>
             <SelectedMoviePlot>{Plot}</SelectedMoviePlot>
             {!isWatched ? (
               <AddButton onClick={handleAddWatchedMovies}>Add</AddButton>
