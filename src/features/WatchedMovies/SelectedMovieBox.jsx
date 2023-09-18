@@ -41,16 +41,27 @@ const AddButton = styled.button`
   border: none;
 `;
 
+const AlreadyAddedMovie = styled.h2`
+  margin-top: 1rem;
+  color: var(--color-light-100);
+`;
+
 function SelectedMovieBox() {
   const dispatch = useDispatch();
   const { Year, imdbRating, Title, Runtime, Plot, Director, Actors, Poster } =
     useSelector((state) => state.movie.selectedMovie);
 
-  const { selectedMovie, isShowing } = useSelector((state) => state.movie);
+  const { selectedMovie, isShowing, watchedMovieData } = useSelector(
+    (state) => state.movie
+  );
 
   function handleAddWatchedMovies() {
     dispatch(addWatchedMovies(selectedMovie));
   }
+
+  const isWatched = watchedMovieData
+    .map((movie) => movie.imdbID)
+    .includes(selectedMovie.imdbID);
 
   return (
     <SelectedMovieFullInfo>
@@ -64,12 +75,18 @@ function SelectedMovieBox() {
             <h2>Cast :{Actors}</h2>
             <h2>Rating :{imdbRating} imbdRating</h2>
             <SelectedMoviePlot>{Plot}</SelectedMoviePlot>
-            <AddButton onClick={handleAddWatchedMovies}>Add</AddButton>
+            {!isWatched ? (
+              <AddButton onClick={handleAddWatchedMovies}>Add</AddButton>
+            ) : (
+              <AlreadyAddedMovie>Movie already added</AlreadyAddedMovie>
+            )}
           </div>
         </SelectedMovieUpperPart>
       )}
       <SelectedMovieUnderPart>
-        <AddedWatchedMovies />
+        {watchedMovieData.map((eachMov) => (
+          <AddedWatchedMovies eachMov={eachMov} key={eachMov.Title} />
+        ))}
       </SelectedMovieUnderPart>
     </SelectedMovieFullInfo>
   );
