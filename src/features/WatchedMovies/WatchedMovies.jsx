@@ -1,15 +1,16 @@
-import { useSelector } from "react-redux";
-import { BoxButton, StyledBox } from "../RenderedMovies/Box";
+import { BoxButton } from "../RenderedMovies/Box";
 import styled from "styled-components";
+import SelectedMovieBox from "./SelectedMovieBox";
+import { useDispatch, useSelector } from "react-redux";
+import { addIsShowing } from "../SearchNavbar/movieSlice";
 
 const MovieInfoContainer = styled.div`
   margin-top: 4rem;
-  background-color: red;
 `;
 
 const WatchedMovieBox = styled.div`
-  width: 42rem;
-  max-width: 42rem;
+  width: 72rem;
+  max-width: 72rem;
   background-color: var(--color-background-300);
   border-radius: 0.9rem;
   overflow: auto;
@@ -18,16 +19,29 @@ const WatchedMovieBox = styled.div`
   background-color: var(--color-grey-600);
 `;
 
+const OpenShow = styled.h2`
+  font-size: 2.6rem;
+  margin-right: 1.6rem;
+  color: var(--color-light-100);
+`;
+
 function WatchedMovies() {
-  const { Year, imdbRating, Title, Runtime, Plot, Director, Actors } =
-    useSelector((state) => state.movie.selectedMovie);
+  const dispatch = useDispatch();
+
+  const isShowing = useSelector((state) => state.movie.isShowing);
+
+  function handleCloseOpen() {
+    dispatch(addIsShowing(!isShowing));
+  }
 
   return (
     <WatchedMovieBox>
-      <BoxButton>
-        <p>+</p>
+      <BoxButton onClick={handleCloseOpen}>
+        <OpenShow>{isShowing ? "-" : "+"}</OpenShow>
       </BoxButton>
-      <MovieInfoContainer>TEST</MovieInfoContainer>
+      <MovieInfoContainer>
+        <SelectedMovieBox />
+      </MovieInfoContainer>
     </WatchedMovieBox>
   );
 }

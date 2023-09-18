@@ -5,8 +5,8 @@ import Loader from "../../ui/Loader";
 import StartSearching from "../../ui/StartSearching";
 
 export const StyledBox = styled.div`
-  width: 42rem;
-  max-width: 42rem;
+  width: 45%;
+  max-width: 45%;
   background-color: var(--color-background-300);
   border-radius: 0.9rem;
   overflow: auto;
