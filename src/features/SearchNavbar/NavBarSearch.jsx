@@ -4,17 +4,38 @@ import { getMovies } from "../../services/useMovies";
 import { useSelector, useDispatch } from "react-redux";
 import { addMovies, addQuery, isMovieSearchLoading } from "./movieSlice";
 import { useState } from "react";
+import { HiMagnifyingGlass } from "react-icons/hi2";
 
 const NavbarInput = styled.input`
-  width: 15%;
+  /* width: 100%; */
   height: 40px;
   border-radius: 10px;
   padding: 0 1.4rem;
   outline: none;
   border: none;
+  transition: all 0.2s;
   &:focus {
     border: 1px solid var(--color-grey-500);
+    transform: translateY(-3px);
   }
+`;
+
+const SearchQueryButton = styled.button`
+  width: 40px;
+  border: none;
+  font-size: 2rem;
+  border-radius: 50%;
+  transition: all 0.2s;
+
+  padding-top: 6px;
+  &:hover {
+    transform: scale(1.04);
+  }
+`;
+
+const SearchQueryContainer = styled.div`
+  display: flex;
+  gap: 1rem;
 `;
 
 function NavBarSearch() {
@@ -40,13 +61,15 @@ function NavBarSearch() {
   }
 
   return (
-    <>
+    <SearchQueryContainer>
       <NavbarInput
         placeholder="Search Movies..."
         onChange={(e) => setSearchMovie(e.target.value)}
       />
-      <button onClick={handleAddQuery}>+</button>
-    </>
+      <SearchQueryButton onClick={handleAddQuery}>
+        <HiMagnifyingGlass />
+      </SearchQueryButton>
+    </SearchQueryContainer>
     // <NavbarInput
     //   placeholder="Search Movies..."
     //   onChange={(e) => dispatch(addQuery(e.target.value))}

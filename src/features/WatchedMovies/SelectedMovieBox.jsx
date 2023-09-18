@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { BoxButton } from "../RenderedMovies/Box";
 import AddedWatchedMovies from "./AddedWatchedMovies";
-import { addWatchedMovies } from "../SearchNavbar/movieSlice";
+import { addIsShowing, addWatchedMovies } from "../SearchNavbar/movieSlice";
 
 const SelectedImg = styled.img`
   width: auto;
@@ -57,6 +57,7 @@ function SelectedMovieBox() {
 
   function handleAddWatchedMovies() {
     dispatch(addWatchedMovies(selectedMovie));
+    dispatch(addIsShowing(false));
   }
 
   const isWatched = watchedMovieData

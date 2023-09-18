@@ -31,6 +31,11 @@ export const movieSlice = createSlice({
     addWatchedMovies: (state, action) => {
       state.watchedMovieData = [...state.watchedMovieData, action.payload];
     },
+    removeAddedWatched: (state, action) => {
+      state.watchedMovieData = state.watchedMovieData.filter(
+        (eachMov) => eachMov.imdbID !== action.payload
+      );
+    },
   },
 });
 
@@ -41,6 +46,7 @@ export const {
   isMovieSearchLoading,
   addIsShowing,
   addWatchedMovies,
+  removeAddedWatched,
 } = movieSlice.actions;
 
 export default movieSlice.reducer;
