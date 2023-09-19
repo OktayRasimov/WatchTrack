@@ -79,15 +79,19 @@ function SelectedMovieBox() {
 
   const { selectedMovie, isShowing, watchedMovieData, movieComment } =
     useSelector((state) => state.movie);
-  const test = { ...selectedMovieData, message: movieComment };
+  const usingSelectedMovieData = {
+    ...selectedMovieData,
+    message: movieComment,
+  };
 
-  console.log(test);
+  console.log(usingSelectedMovieData);
 
-  const { Year, imdbRating, Title, Plot, Director, Actors, Poster } =
-    useSelector((state) => state.movie.selectedMovie);
+  // const { Year, imdbRating, Title, Plot, Director, Actors, Poster } =
+  //   useSelector((state) => state.movie.selectedMovie);
 
   function handleAddWatchedMovies() {
-    dispatch(addWatchedMovies(selectedMovie));
+    dispatch(addWatchedMovies(usingSelectedMovieData));
+    dispatch(addMovieComent(""));
     dispatch(addIsShowing(false));
   }
 
@@ -97,31 +101,38 @@ function SelectedMovieBox() {
 
   return (
     <SelectedMovieFullInfo>
-      {Title && isShowing && (
+      {usingSelectedMovieData.Title && isShowing && (
         <SelectedMovieUpperPart>
-          <SelectedImg src={Poster} />
+          <SelectedImg src={usingSelectedMovieData.Poster} />
           <div>
-            <MovieTitle>{Title}</MovieTitle>
+            <MovieTitle>{usingSelectedMovieData.Title}</MovieTitle>
             <h2>
-              Release :<EachProp $size="6rem">{Year} 🗓</EachProp>
+              Release :
+              <EachProp $size="6rem">{usingSelectedMovieData.Year} 🗓</EachProp>
             </h2>
             <h2>
-              Director :<EachProp $size="5.6rem">{Director} </EachProp>
+              Director :
+              <EachProp $size="5.6rem">
+                {usingSelectedMovieData.Director}{" "}
+              </EachProp>
             </h2>
             <h2>
               Rating :
               <EachProp $size="7.4rem">
-                {imdbRating} <HiMiniTrophy />
+                {usingSelectedMovieData.imdbRating} <HiMiniTrophy />
               </EachProp>
             </h2>
             <h2>
-              Cast :<EachProp $size="9.6rem">{Actors} </EachProp>
+              Cast :
+              <EachProp $size="9.6rem">
+                {usingSelectedMovieData.Actors}{" "}
+              </EachProp>
             </h2>
-            <SelectedMoviePlot>{Plot}</SelectedMoviePlot>
+            <SelectedMoviePlot>{usingSelectedMovieData.Plot}</SelectedMoviePlot>
             {!isWatched ? (
               <AddButton onClick={handleAddWatchedMovies}>Add</AddButton>
             ) : (
-              <AlreadyAddedMovie>Movie already added</AlreadyAddedMovie>
+              <AlreadyAddedMovie>Movie already watched</AlreadyAddedMovie>
             )}
             {!isWatched && (
               <TextArea

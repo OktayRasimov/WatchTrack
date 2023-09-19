@@ -27,10 +27,32 @@ const CloseButton = styled.span`
   width: auto;
 `;
 
-const WatchedTitle = styled.h1``;
+const WatchedTitle = styled.h3``;
+
+const AddedPosterTitle = styled.div`
+  display: flex;
+  gap: 2rem;
+  width: 50%;
+  max-width: 50%;
+`;
+const AddedReviewComment = styled.div`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  border-left: solid 1px black;
+  width: 50%;
+  max-width: 50%;
+  padding-left: 1rem;
+  gap: 1rem;
+`;
+
+const ReviewTitle = styled.h3`
+  font-size: 2rem;
+  color: #fff;
+`;
 
 function AddedWatchedMovies({ eachMov }) {
-  const { Title, Poster, Year, imdbID } = eachMov;
+  const { Title, Poster, Year, imdbID, message } = eachMov;
   const dispatch = useDispatch();
 
   function handleRemoveAdded() {
@@ -40,8 +62,15 @@ function AddedWatchedMovies({ eachMov }) {
   return (
     <EachAddedMovieContainer>
       <CloseButton onClick={handleRemoveAdded}>X</CloseButton>
-      <Img src={Poster} />
-      <WatchedTitle>{Title}</WatchedTitle>
+      <AddedPosterTitle>
+        <Img src={Poster} />
+        <WatchedTitle>{Title}</WatchedTitle>
+      </AddedPosterTitle>
+      <AddedReviewComment>
+        <ReviewTitle>Review</ReviewTitle>
+        {/* <p>{!message ? "Movie Not Rated" : message}</p> */}
+        {!message ? <h2>Movie Not Rated</h2> : <h4>{message}</h4>}
+      </AddedReviewComment>
     </EachAddedMovieContainer>
   );
 }
