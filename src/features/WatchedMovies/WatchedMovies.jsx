@@ -28,21 +28,23 @@ const OpenShow = styled.h2`
 function WatchedMovies() {
   const dispatch = useDispatch();
 
-  const isShowing = useSelector((state) => state.movie.isShowing);
+  const { isShowing, selectedMovie } = useSelector((state) => state.movie);
 
   function handleCloseOpen() {
     dispatch(addIsShowing(!isShowing));
   }
 
   return (
-    <WatchedMovieBox>
-      <BoxButton onClick={handleCloseOpen}>
-        <OpenShow>{isShowing ? "-" : "+"}</OpenShow>
-      </BoxButton>
-      <MovieInfoContainer>
-        <SelectedMovieBox />
-      </MovieInfoContainer>
-    </WatchedMovieBox>
+    selectedMovie.Title && (
+      <WatchedMovieBox>
+        <BoxButton onClick={handleCloseOpen}>
+          <OpenShow>{isShowing ? "-" : "+"}</OpenShow>
+        </BoxButton>
+        <MovieInfoContainer>
+          <SelectedMovieBox />
+        </MovieInfoContainer>
+      </WatchedMovieBox>
+    )
   );
 }
 
