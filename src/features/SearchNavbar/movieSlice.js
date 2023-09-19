@@ -6,7 +6,7 @@ const initialState = {
   selectedMovie: [],
   isLoading: null,
   isShowing: false,
-
+  movieComment: "",
   query: "",
 };
 
@@ -41,6 +41,9 @@ export const movieSlice = createSlice({
         (eachMov) => eachMov.imdbID !== action.payload
       );
     },
+    addMovieComent: (state, action) => {
+      state.movieComment = action.payload;
+    },
   },
 });
 
@@ -52,6 +55,7 @@ export const {
   addIsShowing,
   addWatchedMovies,
   removeAddedWatched,
+  addMovieComent,
 } = movieSlice.actions;
 
 export default movieSlice.reducer;

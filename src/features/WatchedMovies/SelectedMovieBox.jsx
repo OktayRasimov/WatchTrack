@@ -2,7 +2,11 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 
 import AddedWatchedMovies from "./AddedWatchedMovies";
-import { addIsShowing, addWatchedMovies } from "../SearchNavbar/movieSlice";
+import {
+  addIsShowing,
+  addMovieComent,
+  addWatchedMovies,
+} from "../SearchNavbar/movieSlice";
 import { HiMiniTrophy } from "react-icons/hi2";
 
 const SelectedImg = styled.img`
@@ -65,18 +69,22 @@ const TextArea = styled.textarea`
   width: 40%;
   border-radius: 5px;
   height: auto;
-  bottom: 5%;
+  bottom: 2%;
   right: 1%;
 `;
 
 function SelectedMovieBox() {
   const dispatch = useDispatch();
+  const selectedMovieData = useSelector((state) => state.movie.selectedMovie);
+
+  const { selectedMovie, isShowing, watchedMovieData, movieComment } =
+    useSelector((state) => state.movie);
+  const test = { ...selectedMovieData, message: movieComment };
+
+  console.log(test);
+
   const { Year, imdbRating, Title, Plot, Director, Actors, Poster } =
     useSelector((state) => state.movie.selectedMovie);
-
-  const { selectedMovie, isShowing, watchedMovieData } = useSelector(
-    (state) => state.movie
-  );
 
   function handleAddWatchedMovies() {
     dispatch(addWatchedMovies(selectedMovie));
@@ -117,9 +125,10 @@ function SelectedMovieBox() {
             )}
             {!isWatched && (
               <TextArea
-                maxLength={60}
-                placeholder="Write a review"
+                maxLength={70}
+                placeholder="Write a short review"
                 style={{ paddingLeft: "1rem" }}
+                onChange={(e) => dispatch(addMovieComent(e.target.value))}
               />
             )}
           </div>

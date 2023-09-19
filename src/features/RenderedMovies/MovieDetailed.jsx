@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { addIsShowing, addSelectedMovie } from "../SearchNavbar/movieSlice";
 import { getMoviesFullData } from "../../services/useMovies";
@@ -29,12 +29,12 @@ const MovieTitle = styled.p`
 
 function MovieDetailed({ movie }) {
   const dispatch = useDispatch();
+
   const { Title, Poster } = movie;
 
   async function handleAddSelectedMovie() {
     const x = await getMoviesFullData(movie.imdbID);
-    const test = { ...x, message: "tester" };
-    console.log(test);
+
     dispatch(addSelectedMovie(x));
     dispatch(addIsShowing(true));
   }
