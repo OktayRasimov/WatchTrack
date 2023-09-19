@@ -11,14 +11,14 @@ const rotate = keyframes`
 `;
 
 const LoaderRing = styled.div`
-  display: inline-block;
+  /* display: inline-block; */
   animation: ${rotate} 3s linear infinite;
-  padding: 2rem 1rem;
-  font-size: 6.2rem;
+
+  font-size: 12.2rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 50%;
+  /* padding-top: 50%; */
   color: var(--color-light-100);
 `;
 
