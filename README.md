@@ -16,7 +16,7 @@ https://watch-track.vercel.app/
 
 **Client:** React, Redux, React Query
 
-**Styles** Styled-Components
+**Styles:** Styled-Components
 
 
 
