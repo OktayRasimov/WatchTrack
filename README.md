@@ -5,7 +5,8 @@ An app for keeping track of watched and review movies
 
 
 ## Img
-![alt text](https://github.com/OktayRasimov/WatchTrack/blob/main/src/Images/Screen.png?raw=true)
+![project screenshot](https://github.com/OktayRasimov/WatchTrack/assets/131280054/f42cfffa-d4c0-4542-928b-bbda828f5396)
+
 ## Demo
 
 https://watch-track.vercel.app/
