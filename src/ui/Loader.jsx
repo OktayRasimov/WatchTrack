@@ -12,13 +12,12 @@ const rotate = keyframes`
 
 const LoaderRing = styled.div`
   /* display: inline-block; */
-  animation: ${rotate} 3s linear infinite;
+  position: absolute;
+  top: 10%;
+  left: 40%;
+  animation: ${rotate} 4s linear infinite;
+  font-size: 24.2rem;
 
-  font-size: 12.2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* padding-top: 50%; */
   color: var(--color-light-100);
 `;
 

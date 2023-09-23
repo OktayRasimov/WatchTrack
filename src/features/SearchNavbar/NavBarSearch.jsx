@@ -2,9 +2,15 @@ import styled from "styled-components";
 import { useQuery } from "@tanstack/react-query";
 import { getMovies } from "../../services/useMovies";
 import { useSelector, useDispatch } from "react-redux";
-import { addMovies, addQuery, isMovieSearchLoading } from "./movieSlice";
-import { useState } from "react";
+import {
+  addMovies,
+  addQuery,
+  errorResetter,
+  isMovieSearchLoading,
+} from "./movieSlice";
+import { useEffect, useState } from "react";
 import { HiMagnifyingGlass } from "react-icons/hi2";
+import toast from "react-hot-toast";
 
 const NavbarInput = styled.input`
   /* width: 100%; */
@@ -40,15 +46,20 @@ const SearchQueryContainer = styled.div`
 
 function NavBarSearch() {
   const searchQuery = useSelector((state) => state.movie.query);
+  const foundMovies = useSelector((state) => state.movie.movieData);
 
   const [searchMovie, setSearchMovie] = useState("");
 
   const dispatch = useDispatch();
 
   //React Queries movie data fetching
-  const { data, isLoading, isError } = useQuery({
+  const { data, isLoading, isError, error } = useQuery({
     queryKey: ["getMovies", searchQuery],
     queryFn: () => getMovies(searchQuery),
+    onError: (error) => {
+      toast.error(`${error.message}`);
+      setSearchMovie("");
+    },
   });
 
   dispatch(isMovieSearchLoading(isLoading));
@@ -64,6 +75,7 @@ function NavBarSearch() {
     <SearchQueryContainer>
       <NavbarInput
         placeholder="Search Movies..."
+        value={searchMovie}
         onChange={(e) => setSearchMovie(e.target.value)}
       />
       <SearchQueryButton onClick={handleAddQuery}>

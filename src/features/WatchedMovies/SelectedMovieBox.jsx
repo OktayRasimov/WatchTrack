@@ -84,8 +84,6 @@ function SelectedMovieBox() {
     message: movieComment,
   };
 
-  console.log(usingSelectedMovieData);
-
   // const { Year, imdbRating, Title, Plot, Director, Actors, Poster } =
   //   useSelector((state) => state.movie.selectedMovie);
 

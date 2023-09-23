@@ -8,6 +8,9 @@ export async function getMovies(query) {
 
   const data = await res.json();
 
+  if (data.Error === "Movie not found!")
+    throw new Error(`${data.Error} Try Again`);
+
   return data;
 }
 

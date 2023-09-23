@@ -44,6 +44,9 @@ export const movieSlice = createSlice({
     addMovieComent: (state, action) => {
       state.movieComment = action.payload;
     },
+    errorResetter: (state) => {
+      (state.movieData = []), (state.query = "");
+    },
   },
 });
 
@@ -56,6 +59,7 @@ export const {
   addWatchedMovies,
   removeAddedWatched,
   addMovieComent,
+  errorResetter,
 } = movieSlice.actions;
 
 export default movieSlice.reducer;
