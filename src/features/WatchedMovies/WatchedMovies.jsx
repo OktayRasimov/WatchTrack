@@ -14,7 +14,9 @@ const WatchedMovieBox = styled.div`
   background-color: var(--color-background-300);
   border-radius: 0.9rem;
   overflow: auto;
-  height: max(800px, 400px);
+  /* height: max(800px, 400px); */
+  min-height: 80vh;
+  max-height: 80vh;
   position: relative;
   background-color: var(--color-grey-600);
 `;
