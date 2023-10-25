@@ -12,6 +12,9 @@ const LogoDiv = styled.div`
 const LogoHeader = styled.h3`
   color: var(--color-white-100);
   font-size: 2.6rem;
+  @media (width<=750px) {
+    font-size: medium;
+  }
 `;
 
 const ReactIconLogo = styled.span`

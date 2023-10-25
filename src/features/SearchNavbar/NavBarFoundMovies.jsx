@@ -4,6 +4,9 @@ import styled from "styled-components";
 const FoundMovies = styled.h1`
   font-size: 2.6rem;
   color: var(--color-grey-500);
+  @media (width<=750px) {
+    font-size: medium;
+  }
 `;
 
 const FoundMoviesNum = styled.span`

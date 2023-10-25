@@ -6,7 +6,7 @@ import StartSearching from "../../ui/StartSearching";
 
 export const StyledBox = styled.div`
   width: 45%;
-  max-width: 45%;
+  min-width: 50rem;
   background-color: var(--color-background-300);
   border-radius: 0.9rem;
   overflow: auto;

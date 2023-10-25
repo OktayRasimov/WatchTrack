@@ -24,6 +24,9 @@ const NavbarInput = styled.input`
     border: 1px solid var(--color-grey-500);
     transform: translateY(-3px);
   }
+  @media (width<=750px) {
+    width: 80%;
+  }
 `;
 
 const SearchQueryButton = styled.button`
