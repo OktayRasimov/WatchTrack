@@ -16,6 +16,12 @@ export const StyledBox = styled.div`
   /* padding-bottom: 48rem; */
   position: relative;
   background-color: var(--color-grey-600);
+  @media (width<=650px) {
+    min-width: 40rem;
+  }
+  @media (width<=400px) {
+    min-width: 35rem;
+  }
 `;
 
 export const BoxButton = styled.button`
