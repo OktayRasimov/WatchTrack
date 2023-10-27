@@ -13,14 +13,15 @@ export const StyledBox = styled.div`
   /* height: max(800px, 400px); */
   min-height: 80vh;
   max-height: 80vh;
+
   /* padding-bottom: 48rem; */
   position: relative;
   background-color: var(--color-grey-600);
   @media (width<=650px) {
     min-width: 40rem;
   }
-  @media (width<=400px) {
-    min-width: 35rem;
+  @media (width<=450px) {
+    min-width: 88%;
   }
 `;
 
