@@ -1,5 +1,3 @@
-////////////////////
-
 <h1 align="center" id="title">WatchTrack</h1>
 
 <p id="description">WatchTrack: A dynamic web application designed for movie enthusiasts. With this platform you can effortlessly review and track your favorite films. Explore a user-friendly responsive interface to enhance your movie-watching experience and easily keep a record of your thoughts and opinions on films.</p>
