@@ -21,7 +21,7 @@ export const StyledBox = styled.div`
     min-width: 40rem;
   }
   @media (width<=450px) {
-    min-width: 88%;
+    min-width: 100%;
   }
 `;
 

@@ -6,6 +6,7 @@ import Box from "../features/RenderedMovies/Box";
 
 const MainPage = styled.section`
   overflow: hidden;
+  margin: 2.5rem;
 `;
 
 const MainBox = styled.div`
