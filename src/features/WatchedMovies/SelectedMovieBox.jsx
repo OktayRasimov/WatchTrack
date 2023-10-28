@@ -10,8 +10,8 @@ import {
 import { HiMiniTrophy } from "react-icons/hi2";
 
 const SelectedImg = styled.img`
-  width: auto;
-  height: 400px;
+  width: fit-content;
+  height: auto;
   margin-right: 2rem;
 `;
 
@@ -25,6 +25,9 @@ const SelectedMovieUpperPart = styled.div`
   display: flex;
   border-bottom: 3px solid var(--color-light-100);
   position: relative;
+  @media (width<=1250px) {
+    flex-direction: column;
+  }
 `;
 const SelectedMovieUnderPart = styled.div`
   margin-top: 2rem;
