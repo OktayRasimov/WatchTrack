@@ -40,7 +40,7 @@ const AddedReviewComment = styled.div`
   flex-direction: column;
   text-align: center;
   border-left: solid 1px black;
-  width: 50%;
+  width: 35%;
   max-width: 50%;
   padding-left: 1rem;
   gap: 1rem;

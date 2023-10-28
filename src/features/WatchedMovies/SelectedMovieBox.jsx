@@ -21,7 +21,7 @@ const SelectedMovieFullInfo = styled.div`
 `;
 
 const SelectedMovieUpperPart = styled.div`
-  height: 42rem;
+  height: fit-content;
   display: flex;
   border-bottom: 3px solid var(--color-light-100);
   position: relative;
