@@ -2,13 +2,17 @@
 
 <p id="description">WatchTrack: A dynamic web application designed for movie enthusiasts. With this platform you can effortlessly review and track your favorite films. Explore a user-friendly responsive interface to enhance your movie-watching experience and easily keep a record of your thoughts and opinions on films.</p>
 
-## Img
+<h2>⛔ ATTENTION</h2>
 
-![alt text](https://github.com/OktayRasimov/WatchTrack/blob/main/src/Images/Screen.png?raw=true)
+<p>The app is hosted on SUPABASE,if some features arent working as expected it might be because the hosting site(SUPABASE) is experiencing problems</p>
 
 <h2>🚀 Demo</h2>
 
 [https://watch-track.vercel.app/](https://watch-track.vercel.app/)
+
+## Img
+
+![alt text](https://github.com/OktayRasimov/WatchTrack/blob/main/src/Images/Screen.png?raw=true)
 
 <h2>💻 Built with</h2>
 
